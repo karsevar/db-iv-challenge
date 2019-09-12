@@ -16,7 +16,8 @@ function getInstructions(recipe_id) {
     return db('instructions') 
             .join('ingredients', 'instructions.ingredient_id', '=', 'ingredients.id')
             .where({recipe_id})
-            .select('ingredients.ingredient_name', 'instructions.quantity', 'instructions.step', 'instructions.step_number')            
+            .select('instructions.step_number', 'ingredients.ingredient_name', 'instructions.quantity', 'instructions.step')   
+            .orderBy('instructions.step_number', 'asc')         
 }
 
 module.exports = {getRecipes, getShoppingList, getInstructions}
