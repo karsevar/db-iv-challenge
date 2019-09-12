@@ -4,5 +4,10 @@ function getRecipes() {
     return db('recipes')
 }
 
-module.exports = {getRecipes}
+function getShoppingList(recipe_id) {
+    return db('instructions')
+        .where({recipe_id})
+}
+
+module.exports = {getRecipes, getShoppingList}
 
